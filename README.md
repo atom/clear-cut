@@ -1,4 +1,4 @@
-# clear-cut
+# clear cut [![Build Status](https://travis-ci.org/atom/clear-cut.png?branch=master)](https://travis-ci.org/atom/clear-cut)
 
 Calculate the specificity of a CSS selector
 
