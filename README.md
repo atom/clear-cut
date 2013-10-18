@@ -14,3 +14,12 @@ specificity('body') # 1
 specificity('#footer') # 1000000
 specificity('.error.message') # 2000
 ```
+
+## Developing
+
+```sh
+git clone https://github.com/atom/clear-cut.git
+cd clear-cut
+npm install
+npm test
+```
