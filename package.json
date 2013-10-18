@@ -2,12 +2,6 @@
   "name": "clear-cut",
   "version": "0.0.0",
   "description": "Calculate specificity of CSS selectors",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/atom/clear-cut/raw/master/LICENSE.md"
-    }
-  ],
   "main": "./lib/main.js",
   "scripts": {
     "prepublish": "grunt prepublish",
