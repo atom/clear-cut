@@ -11,8 +11,8 @@ npm install clear-cut
 ```coffee
 {specificity} = require 'clear-cut'
 specificity('body') # 1
-specificity('#footer') # 1000000
-specificity('.error.message') # 2000
+specificity('#footer') # 100
+specificity('.error.message') # 20
 ```
 
 ## Developing

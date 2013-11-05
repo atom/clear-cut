@@ -27,5 +27,9 @@
     "grunt": "~0.4.1",
     "grunt-shell": "~0.2.2",
     "grunt-coffeelint": "0.0.6"
+  },
+  "dependencies": {
+    "specificity": "0.1.3"
   }
+
 }
