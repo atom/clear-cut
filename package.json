@@ -1,6 +1,6 @@
 {
   "name": "clear-cut",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Calculate specificity of CSS selectors",
   "main": "./lib/main.js",
   "scripts": {
