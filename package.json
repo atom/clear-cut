@@ -2,7 +2,7 @@
   "name": "clear-cut",
   "version": "0.4.0",
   "description": "Calculate specificity of CSS selectors",
-  "main": "./lib/main.js",
+  "main": "./index.js",
   "scripts": {
     "benchmark": "coffee benchmark/benchmark.coffee",
     "test": "node node_modules/.bin/jasmine-focused --coffee --captureExceptions spec"
