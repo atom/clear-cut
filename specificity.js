@@ -2,9 +2,7 @@
  * Calculates the specificity of CSS selectors
  * http://www.w3.org/TR/css3-selectors/#specificity
  *
- * Returns an array of objects with the following properties:
- *  - selector: the input
- *  - specificity: e.g. 0,1,0,0
+ * Returns a selector integer value
  */
 
 var calculate = function(input) {
