@@ -44,16 +44,13 @@ var findMatch = function(regex, type, types, selector) {
 	return selector;
 }
 
+// Calculate the specificity for a selector by dividing it into simple selectors and counting them
 var calculate = function(selector) {
 	var commaIndex = selector.indexOf(',');
 	if (commaIndex !== -1) {
 		selector = selector.substring(0, commaIndex);
 	}
-	return calculateSingle(selector);
-}
 
-// Calculate the specificity for a selector by dividing it into simple selectors and counting them
-var calculateSingle = function(selector) {
 	var	types = {
 		a: 0,
 		b: 0,
