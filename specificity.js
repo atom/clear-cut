@@ -31,11 +31,11 @@ var removeRules = function(selector) {
 
 // Find matches for a regular expression in a string and push their details to parts
 // Type is "a" for IDs, "b" for classes, attributes and pseudo-classes and "c" for elements and pseudo-elements
-var findMatch = function(regex, type, typeCount, selector) {
+var findMatch = function(regex, type, types, selector) {
 	var matches = selector.match(regex);
 	if (matches) {
 		for (var i = 0; i < matches.length; i++) {
-			typeCount[type]++;
+			types[type]++;
 			// Replace this simple selector with whitespace so it won't be counted in further simple selectors
 			selector = selector.replace(matches[i], ' ');
 		}
@@ -60,7 +60,7 @@ var calculate = function(input) {
 
 // Calculate the specificity for a selector by dividing it into simple selectors and counting them
 var calculateSingle = function(selector) {
-	var	typeCount = {
+	var	types = {
 		a: 0,
 		b: 0,
 		c: 0
@@ -72,19 +72,19 @@ var calculateSingle = function(selector) {
 	selector = removeRules(selector);
 
 	// Add attribute selectors to parts collection (type b)
-	selector = findMatch(attributeRegex, 'b', typeCount, selector);
+	selector = findMatch(attributeRegex, 'b', types, selector);
 
 	// Add ID selectors to parts collection (type a)
-	selector = findMatch(idRegex, 'a', typeCount, selector);
+	selector = findMatch(idRegex, 'a', types, selector);
 
 	// Add class selectors to parts collection (type b)
-	selector = findMatch(classRegex, 'b', typeCount, selector);
+	selector = findMatch(classRegex, 'b', types, selector);
 
 	// Add pseudo-element selectors to parts collection (type c)
-	selector = findMatch(pseudoElementRegex, 'c', typeCount, selector);
+	selector = findMatch(pseudoElementRegex, 'c', types, selector);
 
 	// Add pseudo-class selectors to parts collection (type b)
-	selector = findMatch(pseudoClassRegex, 'b', typeCount, selector);
+	selector = findMatch(pseudoClassRegex, 'b', types, selector);
 
 	// Remove universal selector and separator characters
 	selector = selector.replace(separatorRegex, ' ');
@@ -94,9 +94,9 @@ var calculateSingle = function(selector) {
 	selector = selector.replace(straysRegex, ' ');
 
 	// The only things left should be element selectors (type c)
-	findMatch(elementRegex, 'c', typeCount, selector);
+	findMatch(elementRegex, 'c', types, selector);
 
-	return (typeCount.a * 100) + (typeCount.b * 10) + (typeCount.c * 1);
+	return (types.a * 100) + (types.b * 10) + (types.c * 1);
 };
 
 exports.calculate = calculate;
