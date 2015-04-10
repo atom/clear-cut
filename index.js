@@ -91,5 +91,3 @@ exports.specificity = function(selector) {
   }
   return specificity;
 }
-
-exports.calculate = calculate;
