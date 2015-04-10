@@ -1,4 +1,4 @@
-{specificity} = require '../src/main'
+{specificity} = require '../index'
 
 count = 0
 
@@ -10,7 +10,9 @@ calculate = (selector) ->
 benchmark = (number) ->
   for letter in 'abcdefghijklmnopqrztuvwxyz0123456789'
     calculate("a-custom-tag-#{letter}")
+    calculate("a-custom-tag-#{letter}:last")
     calculate("a-custom-tag-#{letter}-#{number}")
+    calculate("a-custom-tag-#{letter}:not(.ag#{number})")
 
     calculate("a-custom-tag-#{letter}, .a-class")
     calculate("a-custom-tag-#{letter}-#{number}, .a-class")
@@ -31,7 +33,9 @@ benchmark = (number) ->
     calculate("body > a-custom-tag-#{letter}#an-id")
 
     calculate(".a-custom-class-#{letter}")
+    calculate(".a-custom-class-#{letter}:last")
     calculate(".a-custom-class-#{letter}-#{number}")
+    calculate(".a-custom-class-#{letter}:not(.a{number})")
 
     calculate(".a-custom-class-#{letter}, body")
     calculate(".a-custom-class-#{letter}-#{number}, body")
@@ -48,6 +52,8 @@ benchmark = (number) ->
     calculate(".a-class, .a-custom-class-#{letter}#an-id")
 
     calculate("#a-custom-id-#{letter}")
+    calculate("#a-custom-id-#{letter}:last")
+    calculate("#a-custom-id-#{letter}:not(.a-#{number})")
     calculate("#a-custom-id-#{letter}.a-class")
 
     calculate("#an-id > #a-custom-id-#{letter}")
