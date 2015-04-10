@@ -7,8 +7,6 @@ calculate = (selector) ->
   specificity(selector)
   return
 
-start = Date.now()
-
 benchmark = (number) ->
   for letter in 'abcdefghijklmnopqrztuvwxyz0123456789'
     calculate("a-custom-tag-#{letter}")
@@ -53,6 +51,6 @@ benchmark = (number) ->
     calculate("#an-id, #a-custom-id-#{letter}.a-class")
   return
 
+start = Date.now()
 benchmark(index) for index in [0..10]
-
 console.log "Calculated #{count} selector specificities in #{Date.now() - start}ms"
