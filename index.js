@@ -84,14 +84,12 @@ var calculate = function(selector) {
 var cache = {};
 
 exports.specificity = function(selector) {
-  var cachedSpecificity = cache[selector];
-
-  if (cachedSpecificity !== undefined)
-    return cachedSpecificity;
-
-  var selectorSpecificity = calculate(selector);
-  cache[selector] = selectorSpecificity;
-  return selectorSpecificity;
+  var specificity = cache[selector];
+  if (specificity === undefined) {
+    specificity = calculate(selector);
+    cache[selector] = specificity;
+  }
+  return specificity;
 }
 
 exports.calculate = calculate;
