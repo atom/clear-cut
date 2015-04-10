@@ -90,4 +90,17 @@ var calculate = function(selector) {
 	return (types.a * 100) + (types.b * 10) + (types.c * 1);
 }
 
+var cache = {};
+
+exports.specificity = function(selector) {
+	var cachedSpecificity = cache[selector];
+
+	if (cachedSpecificity !== undefined)
+		return cachedSpecificity;
+
+	var selectorSpecificity = calculate(selector);
+	cache[selector] = selectorSpecificity;
+	return selectorSpecificity;
+}
+
 exports.calculate = calculate;
