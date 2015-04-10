@@ -15,7 +15,7 @@ var pseudoElementRegex = /(::[^\s\+>~\.\[:]+|:first-line|:first-letter|:before|:
 var pseudoClassRegex = /(:[^\s\+>~\.\[:]+)/g;
 var elementRegex = /([^\s\+>~\.\[:]+)/g;
 var notRegex = /:not\(([^\)]*)\)/g;
-var ruleRegex = /{[^]*/gm;
+var ruleRegex = /\{[^]*/gm;
 var separatorRegex = /[\*\s\+>~]/g;
 var straysRegex = /[#\.]/g;
 
