@@ -28,13 +28,12 @@ var calculate = function(input) {
 };
 
 // Calculate the specificity for a selector by dividing it into simple selectors and counting them
-var calculateSingle = function(input) {
-	var selector = input,
-		findMatch,
+var calculateSingle = function(selector) {
+	var findMatch,
 		typeCount = {
-			'a': 0,
-			'b': 0,
-			'c': 0
+			a: 0,
+			b: 0,
+			c: 0
 		},
 		// The following regular expressions assume that selectors matching the preceding regular expressions have been removed
 		attributeRegex = /(\[[^\]]+\])/g,
