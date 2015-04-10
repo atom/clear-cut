@@ -5,7 +5,6 @@
  * Returns an array of objects with the following properties:
  *  - selector: the input
  *  - specificity: e.g. 0,1,0,0
- *  - parts: array with details about each part of the selector that counts towards the specificity
  */
 
 var calculate = function(input) {
@@ -37,7 +36,6 @@ var calculateSingle = function(input) {
 			'b': 0,
 			'c': 0
 		},
-		parts = [],
 		// The following regular expressions assume that selectors matching the preceding regular expressions have been removed
 		attributeRegex = /(\[[^\]]+\])/g,
 		idRegex = /(#[^\s\+>~\.\[:]+)/g,
@@ -57,12 +55,6 @@ var calculateSingle = function(input) {
 				match = matches[i];
 				index = selector.indexOf(match);
 				length = match.length;
-				parts.push({
-					selector: match,
-					type: type,
-					index: index,
-					length: length
-				});
 				// Replace this simple selector with whitespace so it won't be counted in further simple selectors
 				selector = selector.replace(match, Array(length + 1).join(' '));
 			}
@@ -115,16 +107,9 @@ var calculateSingle = function(input) {
 	// The only things left should be element selectors (type c)
 	findMatch(elementRegex, 'c');
 
-	// Order the parts in the order they appear in the original selector
-	// This is neater for external apps to deal with
-	parts.sort(function(a, b) {
-		return a.index - b.index;
-	});
-
 	return {
 		selector: input,
-		specificity: '0,' + typeCount.a.toString() + ',' + typeCount.b.toString() + ',' + typeCount.c.toString(),
-		parts: parts
+		specificity: '0,' + typeCount.a.toString() + ',' + typeCount.b.toString() + ',' + typeCount.c.toString()
 	};
 };
 
