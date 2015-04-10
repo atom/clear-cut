@@ -7,6 +7,6 @@ module.exports =
     cachedSpecificity = cache[selector]
     return cachedSpecificity if cachedSpecificity?
 
-    [selectorSpecificity] = specificity.calculate(selector)
+    selectorSpecificity = specificity.calculate(selector)
     cache[selector] = selectorSpecificity
     selectorSpecificity

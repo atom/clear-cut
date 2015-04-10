@@ -44,19 +44,13 @@ var findMatch = function(regex, type, types, selector) {
 	return selector;
 }
 
-var calculate = function(input) {
-	// Separate input by commas
-	var selectors = input.split(',');
-	var results = [];
-
-	for (var i = 0; i < selectors.length; i++) {
-		if (selectors[i].length > 0) {
-			results.push(calculateSingle(selectors[i]));
-		}
+var calculate = function(selector) {
+	var commaIndex = selector.indexOf(',');
+	if (commaIndex !== -1) {
+		selector = selector.substring(0, commaIndex);
 	}
-
-	return results;
-};
+	return calculateSingle(selector);
+}
 
 // Calculate the specificity for a selector by dividing it into simple selectors and counting them
 var calculateSingle = function(selector) {
@@ -97,6 +91,6 @@ var calculateSingle = function(selector) {
 	findMatch(elementRegex, 'c', types, selector);
 
 	return (types.a * 100) + (types.b * 10) + (types.c * 1);
-};
+}
 
 exports.calculate = calculate;
