@@ -1,4 +1,4 @@
-{specificity} = require '../lib/main'
+{specificity} = require '../src/main'
 
 count = 0
 
