@@ -30,8 +30,5 @@
     "grunt-contrib-coffee": "~0.9.0",
     "grunt-shell": "~0.2.2",
     "jasmine-focused": "1.x"
-  },
-  "dependencies": {
-    "specificity": "0.1.3"
   }
 }

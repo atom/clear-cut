@@ -1,4 +1,4 @@
-specificity = require 'specificity'
+specificity = require '../specificity.js'
 
 cache = {}
 
