@@ -4,6 +4,7 @@
   "description": "Calculate specificity of CSS selectors",
   "main": "./lib/main.js",
   "scripts": {
+    "benchmark": "coffee benchmark/benchmark.coffee",
     "prepublish": "grunt prepublish",
     "test": "grunt test"
   },
