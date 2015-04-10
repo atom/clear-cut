@@ -107,10 +107,7 @@ var calculateSingle = function(input) {
 	// The only things left should be element selectors (type c)
 	findMatch(elementRegex, 'c');
 
-	return {
-		selector: input,
-		specificity: '0,' + typeCount.a.toString() + ',' + typeCount.b.toString() + ',' + typeCount.c.toString()
-	};
+	return (typeCount.a * 100) + (typeCount.b * 10) + (typeCount.c * 1);
 };
 
 exports.calculate = calculate;
