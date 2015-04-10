@@ -17,21 +17,12 @@ var ruleRegex = /{[^]*/gm;
 var separatorRegex = /[\*\s\+>~]/g;
 var straysRegex = /[#\.]/g;
 
-// Remove the negation psuedo-class (:not) but leave its argument because specificity is calculated on its argument
-var removeNot = function(selector) {
-	if (notRegex.test(selector)) {
-		selector = selector.replace(notRegex, '     $1 ');
-	}
-
-	return selector;
-}
-
 // Remove anything after a left brace in case a user has pasted in a rule, not just a selector
 var removeRules = function(selector) {
-	if (ruleRegex.test(selector)) {
-		var matches = selector.match(ruleRegex);
+	var matches = selector.match(ruleRegex);
+	if (matches) {
 		for (var i = 0; i < matches.length; i++) {
-			selector = selector.replace(matches[i], '');
+			selector = selector.replace(matches[i], ' ');
 		}
 	}
 
@@ -41,12 +32,12 @@ var removeRules = function(selector) {
 // Find matches for a regular expression in a string and push their details to parts
 // Type is "a" for IDs, "b" for classes, attributes and pseudo-classes and "c" for elements and pseudo-elements
 var findMatch = function(regex, type, typeCount, selector) {
-	if (regex.test(selector)) {
-		var matches = selector.match(regex);
+	var matches = selector.match(regex);
+	if (matches) {
 		for (var i = 0; i < matches.length; i++) {
 			typeCount[type]++;
 			// Replace this simple selector with whitespace so it won't be counted in further simple selectors
-			selector = selector.replace(matches[i], '');
+			selector = selector.replace(matches[i], ' ');
 		}
 	}
 
@@ -75,7 +66,8 @@ var calculateSingle = function(selector) {
 		c: 0
 	};
 
-	selector = removeNot(selector);
+	// Remove the negation psuedo-class (:not) but leave its argument because specificity is calculated on its argument
+	selector = selector.replace(notRegex, ' $1 ');
 
 	selector = removeRules(selector);
 
