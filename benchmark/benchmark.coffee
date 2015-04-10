@@ -12,6 +12,9 @@ benchmark = (number) ->
     calculate("a-custom-tag-#{letter}")
     calculate("a-custom-tag-#{letter}-#{number}")
 
+    calculate("a-custom-tag-#{letter}, .a-class")
+    calculate("a-custom-tag-#{letter}-#{number}, .a-class")
+
     calculate("a-custom-tag-#{letter}.a-class")
     calculate("a-custom-tag-#{letter}#an-id")
 
@@ -29,6 +32,9 @@ benchmark = (number) ->
 
     calculate(".a-custom-class-#{letter}")
     calculate(".a-custom-class-#{letter}-#{number}")
+
+    calculate(".a-custom-class-#{letter}, body")
+    calculate(".a-custom-class-#{letter}-#{number}, body")
 
     calculate(".a-custom-class-#{letter}.a-class")
     calculate(".a-custom-class-#{letter}#an-id")
