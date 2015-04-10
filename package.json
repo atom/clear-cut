@@ -5,8 +5,7 @@
   "main": "./lib/main.js",
   "scripts": {
     "benchmark": "coffee benchmark/benchmark.coffee",
-    "prepublish": "grunt prepublish",
-    "test": "grunt test"
+    "test": "node node_modules/.bin/jasmine-focused --coffee --captureExceptions spec"
   },
   "license": "MIT",
   "repository": {
@@ -24,11 +23,6 @@
   ],
   "devDependencies": {
     "coffee-script": "^1.9.1",
-    "grunt": "~0.4.1",
-    "grunt-cli": "~0.1.8",
-    "grunt-coffeelint": "0.0.6",
-    "grunt-contrib-coffee": "~0.9.0",
-    "grunt-shell": "~0.2.2",
     "jasmine-focused": "1.x"
   }
 }
