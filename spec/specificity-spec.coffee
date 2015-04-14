@@ -1,4 +1,4 @@
-{specificity} = require '../src/main'
+{specificity} = require '../index'
 
 describe "specificity", ->
   it "computes the specificity of a selector", ->
