@@ -75,10 +75,12 @@ describe "clear-cut", ->
     it "throws an error if the selector is invalid", ->
       expect(validateSelector('body')).toBeUndefined()
       badSelector = "<>"
-      errorMessage = null
+      validateError = null
       try
         validateSelector(badSelector)
       catch error
-        errorMessage = error.message
+        validateError = error
 
-      expect(errorMessage).toContain(badSelector)
+      expect(validateError.message).toContain(badSelector)
+      expect(validateError.code).toBe 'EBADSELECTOR'
+      expect(validateError.name).toBe 'SyntaxError'
