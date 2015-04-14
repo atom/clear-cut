@@ -81,13 +81,32 @@ var calculate = function(selector) {
   return (types.a * 100) + (types.b * 10) + (types.c * 1);
 }
 
-var cache = {};
+var specificityCache = {};
 
 exports.specificity = function(selector) {
-  var specificity = cache[selector];
+  var specificity = specificityCache[selector];
   if (specificity === undefined) {
     specificity = calculate(selector);
-    cache[selector] = specificity;
+    specificityCache[selector] = specificity;
   }
   return specificity;
+}
+
+if (global.document) {
+  var validSelectorCache = {};
+  var testSelectorElement = global.document.createElement('div');
+
+  exports.isValidSelector = function(selector) {
+    var valid = validSelectorCache[selector];
+    if (valid === undefined) {
+      try {
+        testSelectorElement.querySelector(selector);
+        valid = true;
+      } catch (error) {
+        valid = false;
+      }
+      validSelectorCache[selector] = valid;
+    }
+    return valid;
+  }
 }

@@ -1,4 +1,11 @@
-{specificity} = require '../index'
+global.document ?= createElement: ->
+  querySelector: (selector) ->
+    if selector is '<>'
+      throw new Error('invalid selector')
+    else
+      []
+
+{specificity, isValidSelector} = require '../index'
 
 describe "specificity", ->
   it "computes the specificity of a selector", ->
@@ -53,3 +60,10 @@ describe "specificity", ->
     expect(specificity('#id')).toBeGreaterThan(specificity('.class'))
     expect(specificity('.a.b')).toBeGreaterThan(specificity('.a'))
     expect(specificity('body div')).toBeGreaterThan(specificity('body'))
+
+  describe "isValidSelector", ->
+    it "returns true if the selector is valid, false otherwise", ->
+      expect(isValidSelector('body')).toBe true
+      expect(isValidSelector('body')).toBe true
+      expect(isValidSelector('<>')).toBe false
+      expect(isValidSelector('<>')).toBe false
