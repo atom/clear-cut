@@ -112,8 +112,8 @@ if (global.document) {
 
   exports.validateSelector = function(selector) {
     if (!exports.isSelectorValid(selector)) {
-      var  error = new Error("'#{selector}' is not a valid selector")
-      error.code = 'EBADSELECTOR'
+      var error = new SyntaxError(selector + ' is not a valid selector');
+      error.code = 'EBADSELECTOR';
       throw error;
     }
   }
