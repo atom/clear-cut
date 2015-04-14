@@ -5,7 +5,7 @@ global.document ?= createElement: ->
     else
       []
 
-{specificity, isValidSelector} = require '../index'
+{specificity, isSelectorValid} = require '../index'
 
 describe "clear-cut", ->
   describe "specificity(selector)", ->
@@ -64,9 +64,9 @@ describe "clear-cut", ->
 
       expect(specificity('<>')).toBe 1
 
-  describe "isValidSelector(selector)", ->
+  describe "isSelectorValid(selector)", ->
     it "returns true if the selector is valid, false otherwise", ->
-      expect(isValidSelector('body')).toBe true
-      expect(isValidSelector('body')).toBe true
-      expect(isValidSelector('<>')).toBe false
-      expect(isValidSelector('<>')).toBe false
+      expect(isSelectorValid('body')).toBe true
+      expect(isSelectorValid('body')).toBe true
+      expect(isSelectorValid('<>')).toBe false
+      expect(isSelectorValid('<>')).toBe false

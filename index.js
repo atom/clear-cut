@@ -96,7 +96,7 @@ if (global.document) {
   var validSelectorCache = {};
   var testSelectorElement = global.document.createElement('div');
 
-  exports.isValidSelector = function(selector) {
+  exports.isSelectorValid = function(selector) {
     var valid = validSelectorCache[selector];
     if (valid === undefined) {
       try {
