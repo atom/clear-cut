@@ -61,6 +61,8 @@ describe "specificity", ->
     expect(specificity('.a.b')).toBeGreaterThan(specificity('.a'))
     expect(specificity('body div')).toBeGreaterThan(specificity('body'))
 
+    expect(specificity('<>')).toBe 1
+
   describe "isValidSelector", ->
     it "returns true if the selector is valid, false otherwise", ->
       expect(isValidSelector('body')).toBe true
