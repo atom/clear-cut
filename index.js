@@ -1,5 +1,3 @@
-var util = require("util");
-
 /**
  * Originally ported from https://github.com/keeganstreet/specificity/blob/866bf7ab4e7f62a7179c15b13a95af4e1c7b1afa/specificity.js
  *
@@ -117,7 +115,7 @@ if (global.document) {
       throw {
         name: "BadSelectorError",
         code: "EBADSELECTOR",
-        message: util.format("'%s' is not a valid selector", selector)
+        message: selector + " is not a valid selector"
       }
     }
   }
