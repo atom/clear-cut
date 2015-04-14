@@ -1,10 +1,10 @@
-{specificity} = require '../index'
+{calculateSpecificity} = require '../index'
 
 count = 0
 
 calculate = (selector) ->
   count++
-  specificity(selector)
+  calculateSpecificity(selector)
   return
 
 benchmark = (number) ->

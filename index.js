@@ -83,7 +83,7 @@ var calculate = function(selector) {
 
 var specificityCache = {};
 
-exports.specificity = function(selector) {
+exports.calculateSpecificity = function(selector) {
   var specificity = specificityCache[selector];
   if (specificity === undefined) {
     specificity = calculate(selector);
