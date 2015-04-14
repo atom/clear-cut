@@ -74,4 +74,11 @@ describe "clear-cut", ->
   describe "validateSelector(selector)", ->
     it "throws an error if the selector is invalid", ->
       expect(validateSelector('body')).toBeUndefined()
-      expect(-> validateSelector('<>')).toThrow()
+      badSelector = "<>"
+      errorMessage = null
+      try
+        validateSelector(badSelector)
+      catch error
+        errorMessage = error.message
+
+      expect(errorMessage).toContain(badSelector)
