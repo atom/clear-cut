@@ -5,7 +5,7 @@
   "main": "./index.js",
   "scripts": {
     "benchmark": "coffee benchmark/benchmark.coffee",
-    "test": "node node_modules/.bin/jasmine-focused --coffee --captureExceptions spec"
+    "test": "node_modules/.bin/jasmine-focused --coffee --captureExceptions spec"
   },
   "license": "MIT",
   "repository": {
