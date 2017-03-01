@@ -92,29 +92,31 @@ exports.calculateSpecificity = function(selector) {
   return specificity;
 }
 
-if (global.document) {
-  var validSelectorCache = {};
-  var testSelectorElement = global.document.createElement('div');
+var validSelectorCache = {};
+var testSelectorElement = null;
 
-  exports.isSelectorValid = function(selector) {
-    var valid = validSelectorCache[selector];
-    if (valid === undefined) {
-      try {
-        testSelectorElement.querySelector(selector);
-        valid = true;
-      } catch (error) {
-        valid = false;
-      }
-      validSelectorCache[selector] = valid;
+exports.isSelectorValid = function(selector) {
+  var valid = validSelectorCache[selector];
+  if (valid === undefined) {
+    if (testSelectorElement == null) {
+      testSelectorElement = document.createElement('div')
     }
-    return valid;
+
+    try {
+      testSelectorElement.querySelector(selector);
+      valid = true;
+    } catch (error) {
+      valid = false;
+    }
+    validSelectorCache[selector] = valid;
   }
+  return valid;
+}
 
-  exports.validateSelector = function(selector) {
-    if (!exports.isSelectorValid(selector)) {
-      var error = new SyntaxError(selector + ' is not a valid selector');
-      error.code = 'EBADSELECTOR';
-      throw error;
-    }
+exports.validateSelector = function(selector) {
+  if (!exports.isSelectorValid(selector)) {
+    var error = new SyntaxError(selector + ' is not a valid selector');
+    error.code = 'EBADSELECTOR';
+    throw error;
   }
 }
