@@ -1,4 +1,5 @@
-# Clear cut
+##### Atom and all repositories under Atom will be archived on December 15, 2022. Learn more in our [official announcement](https://github.blog/2022-06-08-sunsetting-atom/)
+ # Clear cut
 [![OS X Build Status](https://travis-ci.org/atom/clear-cut.png?branch=master)](https://travis-ci.org/atom/clear-cut)
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/civ54x89l06286m9/branch/master?svg=true)](https://ci.appveyor.com/project/Atom/clear-cut/branch/master) [![Dependency Status](https://david-dm.org/atom/clear-cut.svg)](https://david-dm.org/atom/clear-cut)
 
